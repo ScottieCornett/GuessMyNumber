@@ -13,14 +13,7 @@ document.querySelector('.check').addEventListener('click', function () {
 
     // When player wins
   } else if (guess === magicNumber) {
-    selectTextQuery('.number', magicNumber);
-    message('Correct Number!');
-    changeBackground('body', '#60b347');
-    changeWidth('.number', '30rem');
-    if (highscore < score) {
-      highscore = score;
-      selectTextQuery('.highscore', highscore);
-    }
+    correctGuess();
   }
   // When a player's number is too high
   else if (guess > magicNumber) {
@@ -75,6 +68,17 @@ const gameOver = function () {
   message('Game Over!!!!');
   selectTextQuery('.score', 0);
 };
+const correctGuess = function () {
+  selectTextQuery('.number', magicNumber);
+  message('Correct Number!');
+  changeBackground('body', '#60b347');
+  changeWidth('.number', '30rem');
+  if (highscore < score) {
+    highscore = score;
+    selectTextQuery('.highscore', highscore);
+  }
+};
+
 const getRandomNumber = function () {
   const number = Math.trunc(Math.random() * 20) + 1;
   return number;
